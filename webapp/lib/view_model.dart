@@ -112,7 +112,7 @@ class MessageViewModel {
     Label currentLabel = existingLabels.first;
     message.labels.insert(0,
       new Label(schemeId, new DateTime.now().toUtc(), currentLabel.codeId,
-        new Origin(auth.getUserEmail(), auth.getUserName()),
+        new Origin(user.getUserEmail(), user.getUserName()),
         checked: checked
         ));
     fbt.updateMessage(dataset, message);
@@ -138,7 +138,7 @@ class MessageViewModel {
     // Update the data-model by prepending this decision
     message.labels.insert(0,
       new Label(schemeId, new DateTime.now().toUtc(), codeId,
-        new Origin(auth.getUserEmail(), auth.getUserName()),
+        new Origin(user.getUserEmail(), user.getUserName()),
         checked: checked
         ));
     fbt.updateMessage(dataset, message);
