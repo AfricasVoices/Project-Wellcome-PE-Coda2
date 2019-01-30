@@ -1,4 +1,4 @@
-# CodaV2
+# CodaV2 for public demonstration usage
 
 [![CircleCI](https://circleci.com/gh/AfricasVoices/CodaV2/tree/master.svg?style=svg)](https://circleci.com/gh/AfricasVoices/CodaV2/tree/master)
 
