@@ -2,7 +2,7 @@ import 'package:firebase/firebase.dart' as firebase;
 import 'package:firebase/firestore.dart' as firestore;
 
 import 'firebase_constants.dart' as firebase_constants;
-import 'authentication.dart' as auth;
+import 'user.dart' as user;
 import 'data_model.dart';
 import 'logger.dart' as log;
 import 'config.dart';
@@ -201,7 +201,7 @@ Future<List<String>> getDatasetIdsList() async {
 
   var datasetsQuery = await _firestoreInstance
     .collection(datasetsCollectionRoot)
-    .where("users", "array-contains", auth.getUserEmail())
+    .where("users", "array-contains", user.getUserEmail())
     .get();
   log.trace("getDatasetIdsList", "Query constructed");
 

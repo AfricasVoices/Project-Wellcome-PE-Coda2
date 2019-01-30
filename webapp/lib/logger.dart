@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import "config.dart";
 import "firebase_constants.dart" as firebase_constants;
-import "authentication.dart" as auth;
+import "user.dart" as user;
 
 
 log(String s) => _write(s);
@@ -39,7 +39,7 @@ severe(String s) {
 _write(String s) {
   var m = {
     "DateTime" : DateTime.now().toUtc().toIso8601String(),
-    "Email" : auth.getUserEmail(),
+    "Email" : user.getUserEmail(),
     "msg" : s
   };
 
@@ -50,7 +50,7 @@ _write(String s) {
 
 _writeMap(Map m) {
   m["DateTime"] = DateTime.now().toUtc().toIso8601String();
-  m["Email"] = auth.getUserEmail();
+  m["Email"] = user.getUserEmail();
   print (m);
   _logToServer(m);
 }

@@ -10,7 +10,7 @@ import 'logger.dart' as log;
 import 'data_model.dart';
 import 'snackbar_ui.dart' as snackbar;
 import 'loader_ui.dart' as loader;
-import 'authentication.dart' as auth;
+import 'user.dart' as user;
 import 'firebase_tools.dart' as fbt;
 
 part 'view_model.dart';
@@ -47,7 +47,7 @@ class CodaUI {
 
   init() async {
     await fbt.init();
-    auth.init();
+    user.init();
     snackbar.init();
 
     window.onError.listen((e) {
@@ -73,6 +73,8 @@ class CodaUI {
         sortTableView();
       }
     });
+
+    displayDatasetView();
   }
 
   displaySignedOutView() {
