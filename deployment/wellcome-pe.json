@@ -1,0 +1,9 @@
+{
+  "apiKey": "AIzaSyBxuaRsAlFKRLG0gbrHLJOWGimBtx-7l0k",
+  "authDomain": "coda-wellcome-pe.firebaseapp.com",
+  "databaseURL": "https://coda-wellcome-pe.firebaseio.com",
+  "projectId": "coda-wellcome-pe",
+  "storageBucket": "coda-wellcome-pe.appspot.com",
+  "messagingSenderId": "1079155333253",
+  "logUrl": "https://us-central1-coda-wellcome-pe.cloudfunctions.net/Log"
+}
