@@ -160,6 +160,9 @@ class CodaUI {
     this.dataset = dataset;
     this.messageList = new MessageListViewModel();
 
+    // reverse sort so when a new message is added, it shows up at the start
+    messageList.sortAscending = false;
+
     messageCodingTable.append(createTableHeader(dataset));
     messageCodingTable.append(createEmptyTableBody(dataset));
     addListenersToMessageCodingTable();
@@ -175,7 +178,7 @@ class CodaUI {
         ..classes.add('seq-name')
         ..text = 'Seq')
       ..append(new SpanElement()
-        ..classes.addAll(['button', 'sort', 'asc']));
+        ..classes.addAll(['button', 'sort', 'desc']));
     headerRow.addCell()
       ..classes.add('message-text')
       ..text = 'Message';
