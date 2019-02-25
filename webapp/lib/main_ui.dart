@@ -216,9 +216,12 @@ class CodaUI {
     });
 
     // It's the first time we're adding messages to the table, select the first code selector
+    // removing this to avoid force focus for the embedded version
+    /*
     if (CodeSelector.activeCodeSelector == null) {
       CodeSelector.activeCodeSelector = messageList.messages.first.codeSelectors.first;
     }
+    */
   }
 
   void updateMessagesInView(List<Message> changedMessages) {
