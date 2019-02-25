@@ -15,6 +15,9 @@ import 'firebase_tools.dart' as fbt;
 
 part 'view_model.dart';
 
+const JUMP_TO_SELECTOR = false; // disabled for embedding
+const DEFAULT_SORT_ASC = false;
+
 CodaUI _codaUI;
 CodaUI get codaUI => _codaUI;
 
@@ -160,8 +163,7 @@ class CodaUI {
     this.dataset = dataset;
     this.messageList = new MessageListViewModel();
 
-    // reverse sort so when a new message is added, it shows up at the start
-    messageList.sortAscending = false;
+    messageList.sortAscending = DEFAULT_SORT_ASC;
 
     messageCodingTable.append(createTableHeader(dataset));
     messageCodingTable.append(createEmptyTableBody(dataset));
@@ -178,7 +180,7 @@ class CodaUI {
         ..classes.add('seq-name')
         ..text = 'Seq')
       ..append(new SpanElement()
-        ..classes.addAll(['button', 'sort', 'desc']));
+        ..classes.addAll(['button', 'sort', DEFAULT_SORT_ASC ? 'asc' : 'desc']));
     headerRow.addCell()
       ..classes.add('message-text')
       ..text = 'Message';
@@ -219,12 +221,9 @@ class CodaUI {
     });
 
     // It's the first time we're adding messages to the table, select the first code selector
-    // removing this to avoid force focus for the embedded version
-    /*
-    if (CodeSelector.activeCodeSelector == null) {
+    if (JUMP_TO_SELECTOR && CodeSelector.activeCodeSelector == null) {
       CodeSelector.activeCodeSelector = messageList.messages.first.codeSelectors.first;
     }
-    */
   }
 
   void updateMessagesInView(List<Message> changedMessages) {
