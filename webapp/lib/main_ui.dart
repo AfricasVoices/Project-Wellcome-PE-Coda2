@@ -8,6 +8,7 @@ import 'dart:html';
 
 import 'logger.dart' as log;
 import 'data_model.dart';
+import 'dataset_tools.dart';
 import 'snackbar_ui.dart' as snackbar;
 import 'loader_ui.dart' as loader;
 import 'user.dart' as user;
@@ -137,6 +138,10 @@ class CodaUI {
       loader.hideLoader();
       return;
     }
+
+    setupListenerForUpdates(dataset, window, (List<Message> messages) {
+      addMessagesToView(messages);
+    });
 
     fbt.setupListenerForFirebaseMessageUpdates(dataset, (List<Message> messages, fbt.ChangeType changeType) {
       switch(changeType) {

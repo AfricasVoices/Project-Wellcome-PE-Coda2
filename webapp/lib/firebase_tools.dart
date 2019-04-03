@@ -38,21 +38,24 @@ init() async {
 }
 
 updateMessage(Dataset dataset, Message msg) {
-  Stopwatch sw = new Stopwatch()..start();
-  log.trace("updateMessage", "$msg");
 
-  var docPath = "datasets/${dataset.id}/messages/${msg.id}";
 
-  if (TEST_MODE) {
-    log.logFirestoreCall('updateMessage', '$docPath', msg.toFirebaseMap());
-    return;
-  }
+  log.trace("skippedMessageUpdate", "$msg");
+  return;
 
-  _firestoreInstance.doc(docPath).set(msg.toFirebaseMap()).then((_) {
-    log.trace("updateMessage", "Complete: ${msg.id}");
-    log.perf("updateMessage", sw.elapsedMilliseconds);
-    updateDatasetStatus(dataset);
-  });
+
+  // var docPath = "datasets/${dataset.id}/messages/${msg.id}";
+
+  // if (TEST_MODE) {
+  //   log.logFirestoreCall('updateMessage', '$docPath', msg.toFirebaseMap());
+  //   return;
+  // }
+
+  // _firestoreInstance.doc(docPath).set(msg.toFirebaseMap()).then((_) {
+  //   log.trace("updateMessage", "Complete: ${msg.id}");
+  //   log.perf("updateMessage", sw.elapsedMilliseconds);
+  //   updateDatasetStatus(dataset);
+  // });
 }
 
 updateDatasetStatus(Dataset dataset) {
